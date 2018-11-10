@@ -1,0 +1,14 @@
+target/*
+build/*
+.idea/*
+.gradle/*
+.svn/*
+*.iml
+*.swp
+*.log
+*.db
+logs/*
+LOG**
+.DS_Store
+*/target/*
+Dockerfile/app-openjre8/
