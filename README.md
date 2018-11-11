@@ -1,1 +1,70 @@
 # zero-data
+基于springboot的报表快速开发模块
+
+## 特性
+结合zero-element将统计报表可配置化。只需编写相应sql语句，即可通过相应配置做到展示统计图表，极大程度上减少了工作量。
+
+## 使用
+zero-data目前仅作为单独模块提供API支持，使用/api/stat/groups/{group}接口获取数据，通过identifier参数进行数据筛选。
+
+## 数据库定义
+```
+CREATE TABLE `st_statistics_group` (
+  `id` bigint(20) AUTO_INCREMENT,
+  `pid` bigint(20) DEFAULT NULL COMMENT '上级分组',
+  `name` varchar(50) NOT NULL COMMENT '组名[唯一标记]',
+  `layout` varchar(26) DEFAULT NULL COMMENT '布局名称',
+  `title` varchar(26) DEFAULT NULL COMMENT '组标题',
+  `span` smallint DEFAULT 1 COMMENT '子分组占父分组的列跨度',
+  `index` smallint DEFAULT 0 COMMENT '分组排序号',
+  `note` text DEFAULT NULL COMMENT '分组描述',
+  UNIQUE(`name`),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `st_statistics_field` (
+  `id` bigint(20) AUTO_INCREMENT,
+  `field` varchar(80) NOT NULL COMMENT '数据域唯一标识符',
+  `group_id` bigint(20) DEFAULT NULL COMMENT '所属分组ID',
+  `group_name` varchar(50) NOT NULL COMMENT '所属分组名称',
+  `name` varchar(50) NOT NULL COMMENT '数据域名称',
+  `pattern` varchar(26) NOT NULL COMMENT '统计数据类型[Count,Rate,Tuple [Timeline,Cluster]]',
+  `chart` varchar(26) NOT NULL COMMENT '标准组件图表名称',
+  `attr_invisible` smallint DEFAULT 0 COMMENT '[属性]是否不可见',
+  `attr_runtime` smallint DEFAULT 0 COMMENT '是否实时查询[via meta]',
+  `attr_span` smallint DEFAULT 1 COMMENT '[属性]所占布局跨列数',
+  `attr_index` smallint DEFAULT 0 COMMENT '[属性]排序号',
+  UNIQUE(`field`),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `st_statistics_record` (
+  `id` bigint(20) AUTO_INCREMENT,
+  `field` varchar(80) NOT NULL COMMENT '数据域标识符',
+  `identifier` varchar(80) DEFAULT NULL COMMENT '统计归属标识',
+  `seq` int NOT NULL DEFAULT 0 COMMENT '记录排序号',
+  `record_name` varchar(50) NOT NULL COMMENT '记录名称',
+  `record_value` varchar(50) NOT NULL COMMENT '记录值',
+  `record_tuple` varchar(30) DEFAULT NULL COMMENT '记录值所属行名称',
+  `record_cluster` varchar(30) DEFAULT NULL COMMENT '记录值所属分类名称',
+  `record_timeline` varchar(30) DEFAULT NULL COMMENT '记录值所属时间区间名称',
+  `timeline` varchar(8) DEFAULT NULL COMMENT '统计时段说明[T,D,W,M,Y,LD3,LW1,LM1,LM3,Q1,Q2,Q3,Q4,TF]',
+  `create_time` datetime NOT NULL DEFAULT current_timestamp COMMENT '记录创建时间',
+  `tmp_field_id` bigint(20) DEFAULT NULL COMMENT '临时标记数据域ID',
+  UNIQUE(`field`,`record_name`,`record_tuple`,`record_cluster`,`timeline`,`identifier`),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `st_statistics_meta` (
+  `id` bigint(20) AUTO_INCREMENT,
+  `field` varchar(80) NOT NULL COMMENT '数据指标唯一标识符',
+  `query_sql` text DEFAULT NULL COMMENT '实时查询sql',
+  `percent` smallint DEFAULT 0 COMMENT '是否显示为百分比',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标路径',
+  `title` varchar(30) DEFAULT NULL COMMENT '图表标题',
+  `field1` varchar(26) DEFAULT NULL COMMENT '保留字段1',
+  `field2` varchar(26) DEFAULT NULL COMMENT '保留字段2',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
