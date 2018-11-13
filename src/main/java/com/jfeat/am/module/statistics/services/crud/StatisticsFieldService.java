@@ -1,7 +1,7 @@
 package com.jfeat.am.module.statistics.services.crud;
 
-import com.jfeat.am.common.crud.CRUDServiceOnly;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
+import com.jfeat.crud.plus.CRUDServiceOnly;
 
 
 /**
@@ -13,7 +13,7 @@ import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField
  * @since 2017-11-25
  */
 
-public interface StatisticsFieldService extends CRUDServiceOnly<StatisticsField>{
+public interface StatisticsFieldService extends CRUDServiceOnly<StatisticsField> {
 
     /**
      * 通过域名获取域信息

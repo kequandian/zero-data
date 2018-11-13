@@ -4,42 +4,45 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jfeat</groupId>
-    <artifactId>sb-statistic</artifactId>
+    <artifactId>zero-data</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>Statistic</name>
-    <description>Statistic</description>
-
-    <parent>
-        <groupId>com.jfeat</groupId>
-        <artifactId>sb-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath/>
-    </parent>
+    <name>Configurable-Statistic-Framework</name>
+    <description>Configurable Statistic Framework</description>
 
     <properties>
-        <sb-base.version>1.0.0</sb-base.version>
-        <sb-account.version>1.0.0</sb-account.version>
-        <sb-crud.version>1.0.4-SNAPSHOT</sb-crud.version>
+        <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
+        <mybatisplus.version>2.1.9</mybatisplus.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <swagger.version>2.9.2</swagger.version>
+        <crud-base.version>0.0.1</crud-base.version>
+        <crud-plus.version>0.0.1</crud-plus.version>
         <skipStandalone>true</skipStandalone>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.jfeat</groupId>
-            <artifactId>sb-base</artifactId>
-            <version>${sb-base.version}</version>
+            <artifactId>crud-base</artifactId>
+            <version>${crud-base.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
-            <artifactId>sb-account</artifactId>
-            <version>${sb-account.version}</version>
+            <artifactId>crud-plus</artifactId>
+            <version>${crud-plus.version}</version>
+        </dependency>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>sb-crud</artifactId>
-            <version>${sb-crud.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
 
         <!--spring boot依赖-->
@@ -86,130 +89,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!--shiro依赖-->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
-            <version>${shiro.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-ehcache</artifactId>
-            <version>${shiro.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- jwt -->
-        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>${jjwt.version}</version>
-        </dependency>
-
-        <!-- redis -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.ruedigermoeller</groupId>
-            <artifactId>fst</artifactId>
-            <version>${fst.version}</version>
-        </dependency>
-
-        <!--其他依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>${druid.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons.io.version}</version>
-		</dependency>
-        <dependency>
-            <groupId>com.github.penggle</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>${kaptcha.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>${ehcache.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>${zxing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>${velocity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibeetl</groupId>
-            <artifactId>beetl</artifactId>
-            <version>${beetl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>sb-statement</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>sb-log</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>sb-starter-test</artifactId>
-            <version>1.0.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -269,28 +148,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.jfeat</groupId>
-                <artifactId>sb-code-generator</artifactId>
-                <version>1.2.2</version>
-                <configuration>
-                    <!-- change to your module name -->
-                    <moduleName>statistics</moduleName>
-                    <outputDir>src/main/java</outputDir>
-                    <parentPackage>com.jfeat.am.module</parentPackage>
-                    <dbUrl>jdbc:mysql://127.0.0.1/test?characterEncoding=utf8</dbUrl>
-                    <username>root</username>
-                    <password>root</password>
-                    <tables>
-                        <table>st_statistics_group</table>
-                    </tables>
-                    <initialize>true</initialize>
-                </configuration>
             </plugin>
         </plugins>
         <resources>

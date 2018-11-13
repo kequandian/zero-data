@@ -2,12 +2,12 @@ package com.jfeat.am.module.statistics.services.crud.impl;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.jfeat.am.common.crud.error.CRUDCode;
-import com.jfeat.am.common.crud.error.CRUDException;
-import com.jfeat.am.common.crud.impl.CRUDServiceGroupImpl;
+import com.jfeat.am.module.statistics.services.crud.StatisticsGroupService;
 import com.jfeat.am.module.statistics.services.persistence.dao.StatisticsGroupMapper;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsGroup;
-import com.jfeat.am.module.statistics.services.crud.StatisticsGroupService;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
+import com.jfeat.crud.plus.impl.CRUDServiceGroupImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -41,7 +41,7 @@ public class StatisticsGroupServiceImpl  extends CRUDServiceGroupImpl<Statistics
             return null;
         }
         if(list.size()>1){
-            throw CRUDException.newException(CRUDCode.CRUD_SLAVE_KEY_NOT_PROVIDED);
+            throw new BusinessException(BusinessCode.CRUD_SLAVE_KEY_NOT_PROVIDED);
         }
         return list.get(0);
     }

@@ -1,14 +1,8 @@
 package com.jfeat.am.module.statistics.api;
 
-import com.jfeat.am.common.constant.tips.SuccessTip;
-import com.jfeat.am.common.constant.tips.Tip;
-import com.jfeat.am.common.controller.BaseController;
-import com.jfeat.am.common.crud.CRUD;
-import com.jfeat.am.common.exception.BusinessCode;
-import com.jfeat.am.common.exception.BusinessException;
 import com.jfeat.am.module.statistics.services.converter.StatisticConverter;
-import com.jfeat.am.module.statistics.services.converter.StatisticGroupData;
 import com.jfeat.am.module.statistics.services.converter.StatisticData;
+import com.jfeat.am.module.statistics.services.converter.StatisticGroupData;
 import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
 import com.jfeat.am.module.statistics.services.crud.StatisticsGroupByService;
 import com.jfeat.am.module.statistics.services.crud.StatisticsGroupService;
@@ -18,6 +12,11 @@ import com.jfeat.am.module.statistics.services.crud.model.StatisticsGroupModel;
 import com.jfeat.am.module.statistics.services.domain.dao.QueryStatisticsRecordDao;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsGroup;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
+import com.jfeat.crud.base.tips.SuccessTip;
+import com.jfeat.crud.base.tips.Tip;
+import com.jfeat.crud.plus.CRUD;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +39,7 @@ import java.util.stream.Collectors;
 @Api("统计 [Statistics]")
 @RestController
 @RequestMapping("/api/stat/groups")
-public class StatisticsGroupEndpoint extends BaseController {
+public class StatisticsGroupEndpoint{
     @Resource
     StatisticsGroupService statisticsGroupService;
     @Resource

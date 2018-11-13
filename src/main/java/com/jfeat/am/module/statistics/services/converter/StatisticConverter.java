@@ -1,14 +1,14 @@
 package com.jfeat.am.module.statistics.services.converter;
 
 import com.jfeat.am.module.statistics.services.converter.statistic.*;
-import com.jfeat.am.module.statistics.services.persistence.model.StatisticsRecord;
 import com.jfeat.am.module.statistics.services.crud.model.StatisticsFieldModel;
-import org.apache.commons.collections.list.TreeList;
-import org.apache.commons.collections.map.HashedMap;
+import com.jfeat.am.module.statistics.services.persistence.model.StatisticsRecord;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.sql.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Code Generator on 2017-11-25
@@ -157,7 +157,7 @@ public class StatisticConverter {
         rateCluster.setSpan(model.getAttrSpan());
 
         rateCluster.setName(model.getName());  ///报表数据域
-        rateCluster.setCluster(new HashedMap());
+        rateCluster.setCluster(new HashMap<>());
         for (StatisticsRecord record : model.getItems()) {
             if(rateCluster.getIdentifier() == null) {
                 rateCluster.setIdentifier(record.getIdentifier());
@@ -260,7 +260,7 @@ public class StatisticConverter {
         tupleCluster.setPattern(model.getPattern());
         tupleCluster.setChart(model.getChart());
         tupleCluster.setSpan(model.getAttrSpan());
-        tupleCluster.setCluster(new HashedMap());
+        tupleCluster.setCluster(new HashMap<>());
         for(StatisticsRecord record : model.getItems()) {
             //从record 获取identifier名称
             if (tupleCluster.getIdentifier() == null) {
@@ -324,7 +324,7 @@ public class StatisticConverter {
         }
 
         // put
-        Map<String,StatisticDataTupleTimeline> clusterTemp = new HashedMap();
+        Map<String,StatisticDataTupleTimeline> clusterTemp = new HashMap<>();
         tupleTimelineCluster.setCluster(clusterTemp);
         for(Map.Entry<String, Map<String,StatisticDataTuple>> entry : hashTemp.entrySet()) {
             String clusterName = entry.getKey();

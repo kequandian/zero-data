@@ -1,9 +1,8 @@
 package com.jfeat.am.module.statistics.api;
 
-import com.jfeat.am.common.constant.tips.SuccessTip;
-import com.jfeat.am.common.constant.tips.Tip;
-import com.jfeat.am.common.controller.BaseController;
 import com.jfeat.am.module.statistics.services.chart.service.StatisticsChartService;
+import com.jfeat.crud.base.tips.SuccessTip;
+import com.jfeat.crud.base.tips.Tip;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ import javax.annotation.Resource;
 @Api("统计 [Statistics]")
 @RestController
 @RequestMapping("/api/stat/fields")
-public class StatisticsFieldChartEndpoint extends BaseController {
+public class StatisticsFieldChartEndpoint{
     @Resource
     StatisticsChartService chartService;
 

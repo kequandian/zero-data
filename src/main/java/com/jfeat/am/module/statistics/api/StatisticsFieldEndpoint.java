@@ -1,20 +1,22 @@
 package com.jfeat.am.module.statistics.api;
 
-import com.jfeat.am.common.constant.tips.SuccessTip;
-import com.jfeat.am.common.constant.tips.Tip;
-import com.jfeat.am.common.controller.BaseController;
-import com.jfeat.am.common.exception.BusinessCode;
-import com.jfeat.am.common.exception.BusinessException;
-import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
 import com.jfeat.am.module.statistics.services.converter.StatisticConverter;
 import com.jfeat.am.module.statistics.services.converter.StatisticData;
+import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
 import com.jfeat.am.module.statistics.services.crud.model.StatisticsFieldModel;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
+import com.jfeat.crud.base.tips.SuccessTip;
+import com.jfeat.crud.base.tips.Tip;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -25,7 +27,7 @@ import javax.annotation.Resource;
 @Api("统计 [Statistics]")
 @RestController
 @RequestMapping("/api/stat/fields")
-public class StatisticsFieldEndpoint extends BaseController {
+public class StatisticsFieldEndpoint{
 
     @Resource
     StatisticsFieldService statisticsFieldService;

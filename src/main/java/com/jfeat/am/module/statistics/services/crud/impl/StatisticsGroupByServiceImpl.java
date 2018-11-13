@@ -1,12 +1,12 @@
 package com.jfeat.am.module.statistics.services.crud.impl;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.jfeat.am.common.crud.impl.CRUDServiceGroupByImpl;
+import com.jfeat.am.module.statistics.services.crud.StatisticsGroupByService;
 import com.jfeat.am.module.statistics.services.persistence.dao.StatisticsFieldMapper;
 import com.jfeat.am.module.statistics.services.persistence.dao.StatisticsGroupMapper;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsGroup;
-import com.jfeat.am.module.statistics.services.crud.StatisticsGroupByService;
+import com.jfeat.crud.plus.impl.CRUDServiceGroupByImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

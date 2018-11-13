@@ -2,12 +2,7 @@ package com.jfeat.am.module.statistics.services.crud.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.jfeat.am.common.crud.CRUD;
-import com.jfeat.am.common.crud.CRUDFilter;
-import com.jfeat.am.common.exception.BusinessCode;
-import com.jfeat.am.common.exception.BusinessException;
 import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
-import com.jfeat.am.module.statistics.services.crud.StatisticsMetaService;
 import com.jfeat.am.module.statistics.services.crud.model.StatisticsFieldModel;
 import com.jfeat.am.module.statistics.services.domain.dao.QueryStatisticsRecordDao;
 import com.jfeat.am.module.statistics.services.persistence.dao.StatisticsFieldMapper;
@@ -16,12 +11,15 @@ import com.jfeat.am.module.statistics.services.persistence.dao.StatisticsRecordM
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsMeta;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsRecord;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
+import com.jfeat.crud.plus.CRUD;
+import com.jfeat.crud.plus.CRUDFilter;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -140,26 +138,6 @@ public class StatisticsFieldServiceImpl implements StatisticsFieldService {
 
     @Override
     public List<StatisticsField> retrieveMasterList() {
-        throw new RuntimeException("fatal: Not support");
-    }
-
-    @Override
-    public StatisticsField createdAndReturnMaster(StatisticsField statisticsField) {
-        throw new RuntimeException("fatal: Not support");
-    }
-
-    @Override
-    public List<StatisticsField> selectMasterList() {
-        throw new RuntimeException("fatal: Not support");
-    }
-
-    @Override
-    public List<StatisticsField> selectMasterList(Map<String, Object> map) {
-        throw new RuntimeException("fatal: Not support");
-    }
-
-    @Override
-    public List<StatisticsField> selectMasterList(String s, Object o) {
         throw new RuntimeException("fatal: Not support");
     }
 

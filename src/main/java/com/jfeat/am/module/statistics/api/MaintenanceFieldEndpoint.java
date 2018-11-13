@@ -1,19 +1,16 @@
 package com.jfeat.am.module.statistics.api;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.jfeat.am.common.constant.tips.Ids;
-import com.jfeat.am.common.constant.tips.SuccessTip;
-import com.jfeat.am.common.constant.tips.Tip;
-import com.jfeat.am.common.controller.BaseController;
-import com.jfeat.am.common.exception.BusinessCode;
-import com.jfeat.am.common.exception.BusinessException;
+import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
 import com.jfeat.am.module.statistics.services.domain.dao.QueryStatisticsFieldDao;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsField;
-import com.jfeat.am.module.statistics.services.crud.StatisticsFieldService;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
+import com.jfeat.crud.base.tips.SuccessTip;
+import com.jfeat.crud.base.tips.Tip;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.rmic.iiop.ValueType;
 
 import javax.annotation.Resource;
 
@@ -28,7 +25,7 @@ import javax.annotation.Resource;
 @Api("统计 [Statistics]")
 @RestController
 @RequestMapping("/api/adm/stat/fields")
-public class MaintenanceFieldEndpoint extends BaseController {
+public class MaintenanceFieldEndpoint{
 
     @Resource
     private StatisticsFieldService statisticsFieldService;
