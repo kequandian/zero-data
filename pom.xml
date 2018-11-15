@@ -24,7 +24,7 @@
         <fastjson.version>1.2.31</fastjson.version>
         <swagger.version>2.9.2</swagger.version>
         <crud-base.version>0.0.1</crud-base.version>
-        <crud-plus.version>0.0.1</crud-plus.version>
+        <crud-core.version>0.0.1</crud-core.version>
         <skipStandalone>true</skipStandalone>
     </properties>
 
@@ -36,8 +36,8 @@
         </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
-            <artifactId>crud-plus</artifactId>
-            <version>${crud-plus.version}</version>
+            <artifactId>crud-core</artifactId>
+            <version>${crud-core.version}</version>
         </dependency>
 
         <!--swagger-->
