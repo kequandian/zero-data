@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -72,11 +73,14 @@ public class StatisticsFieldServiceImpl implements StatisticsFieldService {
             /// 如果需要实时查询，跳过获取统计项
             if (statisticsField.getAttrRuntime() > 0) {
                 metas.forEach(meta -> {
-                   // String sql = meta.getQuerySql();
-                    String sql = "SELECT 1 AS seq, '' AS record_timeline, 'total:all:cost@stat:profit:child' AS field, '商品成本价总额' AS record_name, CONCAT( sum( item.cost_price * item.quantity), '元' ) AS record_value, '' AS record_tuple, '' AS record_cluster, '0' AS timeline, '' AS identifier FROM MallWebapp.t_order LEFT JOIN MallWebapp.t_order_item AS item ON item.order_id = t_order.id WHERE t_order.`status` IN( 'PAID_CONFIRM_PENDING', 'CONFIRMED_DELIVER_PENDING', 'DELIVERING', 'DELIVERED_CONFIRM_PENDING', 'CANCELED_RETURN_PENDING', 'CLOSED_CONFIRMED', 'CANCELED_REFUND_PENDING', 'CONFIRMED_PICK_PENDING' )";
+                    String sql = meta.getQuerySql();
+                   // String sql = "SELECT 1 AS seq, '' AS record_timeline, 'total:all:cost@stat:profit:child' AS field, '商品成本价总额' AS record_name, CONCAT( sum( item.cost_price * item.quantity), '元' ) AS record_value, '' AS record_tuple, '' AS record_cluster, '0' AS timeline, '' AS identifier FROM MallWebapp.t_order LEFT JOIN MallWebapp.t_order_item AS item ON item.order_id = t_order.id WHERE t_order.`status` IN( 'PAID_CONFIRM_PENDING', 'CONFIRMED_DELIVER_PENDING', 'DELIVERING', 'DELIVERED_CONFIRM_PENDING', 'CANCELED_RETURN_PENDING', 'CLOSED_CONFIRMED', 'CANCELED_REFUND_PENDING', 'CONFIRMED_PICK_PENDING' )";
                     if (sql.length() > 0) {
                         List<StatisticsRecord> records = queryStatisticsRecordDao.querySql(sql);
-                        records.forEach(record -> model.addItem(record));
+                        if(identifier != null) {
+                            records = records.stream().filter(identifier::equals).collect(Collectors.toList());
+                        }
+                        model.setItems(records);
                     }
                 });
                 return model;

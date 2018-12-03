@@ -5,7 +5,7 @@
 
     <groupId>com.jfeat</groupId>
     <artifactId>zero-data</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>Configurable-Statistic-Framework</name>
@@ -24,7 +24,7 @@
         <fastjson.version>1.2.31</fastjson.version>
         <swagger.version>2.9.2</swagger.version>
         <crud-base.version>0.0.1</crud-base.version>
-        <crud-core.version>0.0.1</crud-core.version>
+        <crud-plus.version>0.0.1</crud-plus.version>
         <skipStandalone>true</skipStandalone>
     </properties>
 
@@ -36,8 +36,8 @@
         </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
-            <artifactId>crud-core</artifactId>
-            <version>${crud-core.version}</version>
+            <artifactId>crud-plus</artifactId>
+            <version>${crud-plus.version}</version>
         </dependency>
 
         <!--swagger-->
@@ -51,6 +51,8 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
+
+
 
         <!--spring boot依赖-->
         <dependency>
