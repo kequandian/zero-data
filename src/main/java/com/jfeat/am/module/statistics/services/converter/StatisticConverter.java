@@ -5,10 +5,8 @@ import com.jfeat.am.module.statistics.services.crud.model.StatisticsFieldModel;
 import com.jfeat.am.module.statistics.services.persistence.model.StatisticsRecord;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Code Generator on 2017-11-25
@@ -102,7 +100,9 @@ public class StatisticConverter {
                         record.getRecordName(), record.getRecordValue()));
             }
         }
-
+        // sort by seq
+        rates = rates.stream().sorted(Comparator.comparing(StatisticDataNameValue::getSeq)).collect(Collectors.toList());
+        rate.setRates(rates);
         return rate;
     }
     public static StatisticDataRateTimeline convertStatisticRateTimeline(StatisticsFieldModel model){

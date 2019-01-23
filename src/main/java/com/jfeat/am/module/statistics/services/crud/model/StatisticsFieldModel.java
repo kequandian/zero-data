@@ -34,6 +34,13 @@ public class StatisticsFieldModel extends StatisticsField{
         this.items = items;
     }
 
+    public void addItems(List<StatisticsRecord> items) {
+        if(this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.addAll(items);
+    }
+
     public List<StatisticsMeta> getMetas() {
         return metas;
     }
